@@ -2,7 +2,7 @@ export const NAV_ITEMS = [
   {
     id: 'san-pham',
     label: 'Sản phẩm',
-    path: '/san-pham',
+    path: '',
     children: [
       { id: 'do-an', label: 'Đồ ăn', path: '/san-pham/do-an' },
       { id: 'nuoc-uong', label: 'Nước uống', path: '/san-pham/nuoc-uong' },
@@ -13,7 +13,7 @@ export const NAV_ITEMS = [
   {
     id: 'hang-doc-quyen',
     label: 'Hàng độc quyền',
-    path: '/hang-doc-quyen',
+    path: '',
     children: [
       { id: 'youus', label: 'Youus', path: '/hang-doc-quyen/youus' },
       { id: 'moomoossi', label: 'Moomoossi', path: '/hang-doc-quyen/moomoossi' },
