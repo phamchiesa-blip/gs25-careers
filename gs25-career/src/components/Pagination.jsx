@@ -15,7 +15,7 @@ const Pagination = ({
       <button
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        className="w-10 h-10 text-xl disabled:opacity-30"
+        className="w-10 h-10 text-xl disabled:opacity-30 cursor-pointer"
       >
         ←
       </button>
@@ -28,7 +28,7 @@ const Pagination = ({
           className={`
             w-10 h-10 rounded-xl font-bold
             transition-all duration-200
-
+            cursor-pointer
             ${
               currentPage === page
                 ? "bg-blue-500 text-white shadow-md"
@@ -44,7 +44,7 @@ const Pagination = ({
       <button
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
-        className="w-10 h-10 text-xl disabled:opacity-30"
+        className="w-10 h-10 text-xl disabled:opacity-30 cursor-pointer"
       >
         →
       </button>
