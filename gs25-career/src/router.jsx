@@ -11,12 +11,14 @@ import FoodPage from './pages/products/FoodPage'
 import DrinkPage from './pages/products/DrinkPage'
 import DailyPage from './pages/products/DailyPage'
 import CafePage from './pages/products/CafePage'
+import HomePage from './pages/finding/HomePage'
+import JobHomePage from './pages/jobs/JobHomePage'
 
 export default function AppRouter() {
   return (
     <Routes>
       <Route element={<MainLayout />}>
-        <Route path="*" element={null} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/thanh-vien" element={<MembershipPage />} />
         <Route path="/doi-tac" element={<PartnersPage />} />
         <Route path="/ve-gs25" element={<AboutPage />} />
@@ -28,6 +30,7 @@ export default function AppRouter() {
         <Route path="/san-pham/nuoc-uong" element={<DrinkPage />}/>
         <Route path='/san-pham/hang-tieu-dung' element={<DailyPage />}/>
         <Route path='/san-pham/cafe-gs25' element={<CafePage />} />
+        <Route path='/tuyen-dung' element={<JobHomePage />} />
       </Route>
     </Routes>
   )
