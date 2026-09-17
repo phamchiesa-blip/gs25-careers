@@ -13,6 +13,8 @@ import DailyPage from './pages/products/DailyPage'
 import CafePage from './pages/products/CafePage'
 import HomePage from './pages/finding/HomePage'
 import JobHomePage from './pages/jobs/JobHomePage'
+import SMForm from './pages/jobs/registerForm/SMForm'
+import CuliForm from './pages/jobs/registerForm/CuliForm'
 
 export default function AppRouter() {
   return (
@@ -31,6 +33,8 @@ export default function AppRouter() {
         <Route path='/san-pham/hang-tieu-dung' element={<DailyPage />}/>
         <Route path='/san-pham/cafe-gs25' element={<CafePage />} />
         <Route path='/tuyen-dung' element={<JobHomePage />} />
+        <Route path='/sm-form' element={<SMForm />} />
+        <Route path='/nhanvienpt-form' element={<CuliForm />} />
       </Route>
     </Routes>
   )

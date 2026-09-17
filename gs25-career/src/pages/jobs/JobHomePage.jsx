@@ -1,5 +1,7 @@
 import CountUpModule from 'react-countup';
 import JobLists from './JobLists';
+import {stores} from '../../data/stores'
+import { Link } from 'react-router-dom';
 
 const CountUp = CountUpModule.default;
 
@@ -48,7 +50,7 @@ const JobHomePage = () => {
                     KHỐI CỬA HÀNG
                   </h3>
                   <p className="text-sm md:text-base leading-relaxed text-white/95">
-                    Với hệ thống hơn 300 cửa hàng, GS25 Việt Nam đã phủ sóng khắp các tỉnh thành phía Nam: TP. Hồ Chí Minh, Đồng Nai, Bình Dương, Bà Rịa - Vũng Tàu, Tiền Giang, Cần Thơ. GS25 hứa hẹn sẽ đem đến cơ hội nghề nghiệp hấp dẫn cho các bạn trẻ
+                    Với hệ thống hơn {stores.length} cửa hàng luôn mở cửa 24/7, GS25 Việt Nam đã phủ sóng nhiều tỉnh thành trên cả nước như: TP. Hồ Chí Minh, Hà Nội, Đồng Nai, Cần Thơ, Tây Ninh. GS25 hứa hẹn sẽ đem đến cơ hội nghề nghiệp hấp dẫn cho các bạn trẻ
                   </p>
                 </div>
 
@@ -84,15 +86,23 @@ const JobHomePage = () => {
         <h2 id="store" className="text-center text-2xl md:text-4xl font-extrabold text-[#2368A2] uppercase tracking-wide mb-10 mt-[100px]">
             KHỐI CỬA HÀNG GS25
         </h2>
-        <JobLists name={"CỬA HÀNG TRƯỞNG"} typeStaff={"Toàn thời gian"} typeJob={"KHỐI CỬA HÀNG"} />
-        <JobLists name={"NHÂN VIÊN BÁN HÀNG"} typeStaff={"Toàn thời gian"} typeJob={"KHỐI CỬA HÀNG"} />
+        <Link to="/sm-form">
+          <JobLists name={"CỬA HÀNG TRƯỞNG"} typeStaff={"Toàn thời gian"} typeJob={"KHỐI CỬA HÀNG"} />  
+        </Link>
+        <Link to='/nhanvienft-form'>
+          <JobLists name={"NHÂN VIÊN BÁN HÀNG"} typeStaff={"Toàn thời gian"} typeJob={"KHỐI CỬA HÀNG"} />
+        </Link>
+
+        <Link to='/nhanvienpt-form'>
         <JobLists name={"NHÂN VIÊN BÁN HÀNG"} typeStaff={"Bán thời gian"} typeJob={"KHỐI CỬA HÀNG"} />
+        </Link>
+        
+  
         
        
         {/* Khối Văn phòng */}
-         {/* Khối Cửa hàng */}
         <h2 id="office" className="text-center text-2xl md:text-4xl font-extrabold text-[#2368A2] uppercase tracking-wide mb-10 mt-[100px]">
-            KHỐI CỬA HÀNG GS25
+          KHỐI CỬA HÀNG GS25
         </h2>
         <JobLists name={"Legal Manager (Business Partnering)"} typeStaff={"Toàn thời gian"} typeJob={"Legal"} />
         <JobLists name={"QC Executive (Warehouse)"} typeStaff={"Toàn thời gian"} typeJob={"QA & QC"} />

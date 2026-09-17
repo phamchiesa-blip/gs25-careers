@@ -73,7 +73,7 @@ const HomePage = () => {
 
       <section className="mx-auto max-w-[1400px] px-5 py-14 md:px-8 lg:py-20">
         <h2 className="text-center text-3xl font-extrabold leading-tight text-[#002B4F] md:text-5xl">
-          Khám phá hơn 400 cửa hàng của chúng tôi ở toàn quốc.
+          Khám phá hơn {stores.length} cửa hàng của chúng tôi ở toàn quốc.
         </h2>
 
         <div className="mx-auto mt-12 flex max-w-4xl flex-col items-stretch justify-center gap-5 md:flex-row">
@@ -141,7 +141,7 @@ const HomePage = () => {
 
               <div className="mt-8 flex gap-4 text-[#172B4D]">
                 <MapPin className="mt-1 h-7 w-7 shrink-0 text-[#3D70FF]" />
-                <p className="text-lg font-bold leading-relaxed">
+                <p className="text-lg font-bold leading-relaxed line-clamp-2">
                   {store.address}
                 </p>
               </div>
