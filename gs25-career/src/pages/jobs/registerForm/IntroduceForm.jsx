@@ -49,7 +49,7 @@ const IntroduceForm = ({jobName, salary, time, type}) => {
 
       <div class="md:col-span-3 lg:col-span-3">
         <span class="text-sm md:text-base font-semibold uppercase tracking-wider block">
-          KHỐI CỬA HÀNG
+         {type}
         </span>
       </div>
 

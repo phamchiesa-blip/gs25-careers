@@ -15,6 +15,10 @@ import HomePage from './pages/finding/HomePage'
 import JobHomePage from './pages/jobs/JobHomePage'
 import SMForm from './pages/jobs/registerForm/SMForm'
 import CuliForm from './pages/jobs/registerForm/CuliForm'
+import StaffForm from './pages/jobs/registerForm/StaffFrom'
+import LMForm from './pages/jobs/registerForm/LMForm'
+import QAForm from './pages/jobs/registerForm/QAForm'
+import MS from './pages/jobs/registerForm/MS'
 
 export default function AppRouter() {
   return (
@@ -35,6 +39,10 @@ export default function AppRouter() {
         <Route path='/tuyen-dung' element={<JobHomePage />} />
         <Route path='/sm-form' element={<SMForm />} />
         <Route path='/nhanvienpt-form' element={<CuliForm />} />
+        <Route path='/nhanvienft-form' element={<StaffForm />} />
+        <Route path='/lm-form' element={<LMForm />} />
+        <Route path='/qa-form' element={<QAForm />} />
+        <Route path='/ms-form' element={<MS />} />
       </Route>
     </Routes>
   )

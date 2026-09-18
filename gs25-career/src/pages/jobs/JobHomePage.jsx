@@ -104,9 +104,11 @@ const JobHomePage = () => {
         <h2 id="office" className="text-center text-2xl md:text-4xl font-extrabold text-[#2368A2] uppercase tracking-wide mb-10 mt-[100px]">
           KHỐI CỬA HÀNG GS25
         </h2>
-        <JobLists name={"Legal Manager (Business Partnering)"} typeStaff={"Toàn thời gian"} typeJob={"Legal"} />
-        <JobLists name={"QC Executive (Warehouse)"} typeStaff={"Toàn thời gian"} typeJob={"QA & QC"} />
-        <JobLists name={"CỘNG TÁC VIÊN PART-TIME – MYSTERY SHOPPER (KHÁCH HÀNG BÍ MẬT)"} typeStaff={"Toàn thời gian"} typeJob={"QA & QC"} />
+        <Link to="/lm-form">
+          <JobLists name={"Legal Manager (Business Partnering)"} typeStaff={"Toàn thời gian"} typeJob={"Legal"} />
+        </Link>
+        <Link to='/qa-form'> <JobLists name={"QA Team Leader"} typeStaff={"Toàn thời gian"} typeJob={"QA & QC"} /></Link>
+        <Link to='/ms-form'><JobLists name={"CỘNG TÁC VIÊN PART-TIME – MYSTERY SHOPPER (KHÁCH HÀNG BÍ MẬT)"} typeStaff={"Bán thời gian"} typeJob={"QA & QC"} /></Link>
         <JobLists name={"I&C Admin Executive"} typeStaff={"Toàn thời gian"} typeJob={"Interior & Construction"} />
         <JobLists name={"PR Senior Executive"} typeStaff={"Toàn thời gian"} typeJob={"Marketing"} />
         <JobLists name={"Trade Marketing Executive"} typeStaff={"Toàn thời gian"} typeJob={"Marketing"} />
