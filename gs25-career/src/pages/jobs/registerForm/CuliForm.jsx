@@ -45,7 +45,7 @@ const CuliForm = () => {
       const result = await submitApplication(payload);
       setSubmitStatus({
         type: "success",
-        message: result.message || "Nộp đơn ứng tuyển thành công! Vui lòng kiểm tra email xác nhận.",
+        message: result.message || "Nộp đơn ứng tuyển thành công!",
       });
       setFormData(initialFormState);
     } catch (error) {

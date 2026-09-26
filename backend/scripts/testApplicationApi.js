@@ -1,7 +1,7 @@
 const BASE_URL = "http://localhost:5000/api/applications";
 
 async function runTests() {
-  console.log("=== BẮT ĐẦU TEST TOÀN DIỆN 6 FORM ỨNG TUYỂN ===");
+  console.log("=== BẮT ĐẦU TEST TOÀN DIỆN 6 FORM ỨNG TUYỂN VỚI MONGODB ATLAS ===");
 
   const tests = [
     // Validation tests
@@ -46,7 +46,7 @@ async function runTests() {
       expectedStatus: 400,
     },
 
-    // 6 Valid Form Submissions
+    // 6 Valid Form Submissions into MongoDB Atlas
     {
       name: "7. [Form 1 - CuliForm] Nhân viên bán hàng Part-time",
       data: {
@@ -102,7 +102,7 @@ async function runTests() {
         cvFile: {
           name: "CV_LeHoangPhuc_StoreManager.pdf",
           type: "application/pdf",
-          content: "JVBERi0xLjQKJcTl8uXr...", // Dummy base64
+          content: "JVBERi0xLjQKJcTl8uXr...",
         },
       },
       expectedStatus: 200,
@@ -172,7 +172,9 @@ async function runTests() {
       console.log(
         `${passed ? "✅ PASS" : "❌ FAIL"} [${t.name}] - Status: ${res.status} (Kỳ vọng: ${t.expectedStatus})`
       );
-      if (!passed || t.expectedStatus !== 200) {
+      if (passed && t.expectedStatus === 200) {
+        console.log("   Thông báo:", json.message, "| ID:", json.data?.id);
+      } else if (!passed || t.expectedStatus !== 200) {
         console.log("   Phản hồi:", json.message);
       }
     } catch (err) {
@@ -181,6 +183,24 @@ async function runTests() {
   }
 
   console.log(`\n=== TỔNG KẾT: ${successCount}/${tests.length} TESTS ĐÃ VƯỢT QUA ===`);
+
+  // Kiểm tra truy vấn danh sách ứng viên từ MongoDB Atlas
+  try {
+    const listRes = await fetch(BASE_URL);
+    const listJson = await listRes.json();
+    console.log("\n=== KIỂM TRA DỮ LIỆU ĐÃ LƯU TRONG MONGODB ATLAS ===");
+    console.log(`Tổng số hồ sơ trong collection 'applications': ${listJson.count}`);
+    if (listJson.applications && listJson.applications.length > 0) {
+      console.log("3 hồ sơ mới nhất vừa được lưu:");
+      listJson.applications.slice(0, 3).forEach((app, idx) => {
+        console.log(
+          `  ${idx + 1}. [${app.jobTitle}] - ${app.fullName} - ${app.email} (Lưu lúc: ${app.createdAt})`
+        );
+      });
+    }
+  } catch (err) {
+    console.error("Lỗi khi truy vấn danh sách ứng viên từ MongoDB:", err.message);
+  }
 }
 
 runTests();
