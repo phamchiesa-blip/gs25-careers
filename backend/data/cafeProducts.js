@@ -1,0 +1,116 @@
+export const cafeProducts = [
+  {
+    "name": "Matha Latte",
+    "image": "/caffe-ml.png",
+    "category": "cafe",
+    "subCategory": "Special",
+    "sold": 457,
+    "isNew": false
+  },
+  {
+    "name": "Matcha xoài Latte",
+    "image": "/matcha-xoài.png",
+    "category": "cafe",
+    "subCategory": "Special",
+    "sold": 450,
+    "isNew": true
+  },
+  {
+    "name": "Ô long ổi hồng dâu tây",
+    "image": "/ổi-hồng-dâu-tâypng.png",
+    "category": "cafe",
+    "subCategory": "Special",
+    "sold": 335,
+    "isNew": true
+  },
+  {
+    "name": "Cà phê cam xoài",
+    "image": "/cà-phê-cam-xoài.png",
+    "category": "cafe",
+    "subCategory": "Signature",
+    "sold": 258,
+    "isNew": true
+  },
+  {
+    "name": "Cà phê đen",
+    "image": "/cà-phê-đen.png",
+    "category": "cafe",
+    "subCategory": "Signature",
+    "sold": 399,
+    "isNew": false
+  },
+  {
+    "name": "Cà phê sữa",
+    "image": "/cà-phê-sữa.png",
+    "category": "cafe",
+    "subCategory": "Signature",
+    "sold": 393,
+    "isNew": false
+  },
+  {
+    "name": "Cà phê tắc muối",
+    "image": "/cà-phê-tắc-muối.png",
+    "category": "cafe",
+    "subCategory": "Signature",
+    "sold": 363,
+    "isNew": true
+  },
+  {
+    "name": "Cà phê ủ lạnh",
+    "image": "/cafe-coldbrew.png",
+    "category": "cafe",
+    "subCategory": "Signature",
+    "sold": 354,
+    "isNew": false
+  },
+  {
+    "name": "Mocha",
+    "image": "/cafe-mocha.png",
+    "category": "cafe",
+    "subCategory": "Signature",
+    "sold": 322,
+    "isNew": true
+  },
+  {
+    "name": "Bánh xừng bò hạnh nhân",
+    "image": "/croissant-xoài-hạnh-nhân.png",
+    "category": "cafe",
+    "subCategory": "Dessert",
+    "sold": 319,
+    "isNew": true
+  },
+  {
+    "name": "Bánh xừng bò truyền thống",
+    "image": "/croissant-truyền-thốngpng.png",
+    "category": "cafe",
+    "subCategory": "Dessert",
+    "sold": 356,
+    "isNew": false
+  },
+  {
+    "name": "Bánh xừng bò trứng muối chà bông",
+    "image": "/croissant-trứng-muối-chà-bông-hành.png",
+    "category": "cafe",
+    "subCategory": "Dessert",
+    "sold": 377,
+    "isNew": false
+  },
+  {
+    "name": "Bánh xừng bò trứng muối chà bông rong biển",
+    "image": "/croissant-phô-mai-chà-bông-rong-biển.png",
+    "category": "cafe",
+    "subCategory": "Dessert",
+    "sold": 381,
+    "isNew": true
+  },
+  {
+    "name": "Sữa chua hũ các vị",
+    "image": "/sữa-chua-kiwi-hũ.png",
+    "category": "cafe",
+    "subCategory": "Dessert",
+    "sold": 296,
+    "isNew": true
+  }
+];
+
+export default cafeProducts;

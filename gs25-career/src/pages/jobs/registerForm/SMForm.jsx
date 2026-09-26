@@ -1,22 +1,26 @@
 import { useState, useRef } from "react";
 import { UploadCloud, CheckCircle2, Calendar } from "lucide-react";
-import IntroduceForm from './IntroduceForm'
+import IntroduceForm from './IntroduceForm';
+import { submitApplication, fileToBase64 } from "../../../api/applicationApi";
+
+const initialFormState = {
+  fullName: "",
+  email: "",
+  phone: "",
+  idCard: "",
+  hasOriginalId: "",
+  education: "",
+  workingArea: "",
+  expectedSalary: "",
+  startDate: "",
+  cvFile: null,
+};
 
 const SMForm = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    idCard: "",
-    hasOriginalId: "",
-    education: "",
-    workingArea: "",
-    expectedSalary: "",
-    startDate: "",
-    cvFile: null,
-  });
-
+  const [formData, setFormData] = useState(initialFormState);
   const [previewImage, setPreviewImage] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
   const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
@@ -44,10 +48,42 @@ const SMForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Dữ liệu ứng tuyển:", formData);
-    alert("Nộp đơn ứng tuyển thành công!");
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      let cvFileData = null;
+      if (formData.cvFile) {
+        cvFileData = await fileToBase64(formData.cvFile);
+      }
+
+      const payload = {
+        jobId: "cua-hang-truong",
+        jobTitle: "Cửa Hàng Trưởng (Store Manager)",
+        ...formData,
+        cvFile: cvFileData,
+      };
+
+      const result = await submitApplication(payload);
+      setSubmitStatus({
+        type: "success",
+        message: result.message || "Nộp đơn ứng tuyển thành công! Vui lòng kiểm tra email xác nhận.",
+      });
+      setFormData(initialFormState);
+      setPreviewImage(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: error.message || "Có lỗi xảy ra khi nộp đơn. Vui lòng kiểm tra lại thông tin.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -325,13 +361,29 @@ const SMForm = () => {
                 </div>
               </div>
     
+              {/* Trạng thái submit (Thành công / Thất bại) */}
+              {submitStatus && (
+                <div
+                  className={`p-4 rounded-xl text-center font-semibold text-sm sm:text-base transition-all duration-300 ${
+                    submitStatus.type === "success"
+                      ? "bg-emerald-500/20 text-emerald-200 border border-emerald-400"
+                      : "bg-red-500/20 text-red-200 border border-red-400"
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
+
               {/* Nút nộp đơn ứng tuyển */}
               <div className="pt-4 text-center">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-12 py-3.5 bg-[#00BFDD] hover:bg-[#00a7c2] active:scale-95 text-white font-extrabold text-lg sm:text-xl rounded-xl shadow-lg transition-all duration-200 cursor-pointer"
+                  disabled={isSubmitting}
+                  className={`w-full sm:w-auto px-12 py-3.5 bg-[#00BFDD] hover:bg-[#00a7c2] active:scale-95 text-white font-extrabold text-lg sm:text-xl rounded-xl shadow-lg transition-all duration-200 ${
+                    isSubmitting ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+                  }`}
                 >
-                  Nộp đơn ứng tuyển
+                  {isSubmitting ? "Đang gửi hồ sơ..." : "Nộp đơn ứng tuyển"}
                 </button>
               </div>
             </form>

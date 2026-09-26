@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import YouusCard from "./YouusCard";
 import Pagination from "../../components/Pagination";
-import {moomoossiData} from "../../data/categories";
+import { getProducts } from "../../api/productApi";
 
 const Moomoossi = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const [sortType, setSortType] = useState("az");
   const [category, setCategory] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,38 +15,60 @@ const Moomoossi = () => {
   const itemsPerPage = 6;
 
   // =========================
+  // FETCH PRODUCTS FROM API
+  // =========================
+  useEffect(() => {
+    const fetchMoomoossiProducts = async () => {
+      try {
+        setLoading(true);
+        const data = await getProducts("moomoossi");
+        setProducts(data.products || []);
+        setError(null);
+      } catch (err) {
+        console.error("Lỗi khi tải sản phẩm Moomoossi:", err);
+        setError("Không thể tải danh sách sản phẩm. Vui lòng thử lại sau.");
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMoomoossiProducts();
+  }, []);
+
+  // =========================
   // FILTER + SORT
   // =========================
 
-  let filteredProducts = [...moomoossiData];
+  let filteredProducts = [...(products || [])];
 
-  // Lọc theo danh mục
+  // Lọc theo danh mục con (subCategory)
   if (category !== "all") {
     filteredProducts = filteredProducts.filter(
-      (product) => product.category === category
+      (product) => (product.subCategory || product.category) === category
     );
   }
 
   // Sắp xếp
   if (sortType === "az") {
     filteredProducts.sort((a, b) =>
-      a.name.localeCompare(b.name)
+      (a.name || "").localeCompare(b.name || "")
     );
   }
 
   if (sortType === "za") {
     filteredProducts.sort((a, b) =>
-      b.name.localeCompare(a.name)
+      (b.name || "").localeCompare(a.name || "")
     );
   }
 
   if (sortType === "best") {
-    filteredProducts.sort((a, b) => b.sold - a.sold);
+    filteredProducts.sort((a, b) => (b.sold || 0) - (a.sold || 0));
   }
 
-   if (sortType === "newest") {
+  if (sortType === "newest") {
     filteredProducts.sort(
-      (a, b) => Number(b.isNew) - Number(a.isNew)
+      (a, b) => Number(b.isNew || false) - Number(a.isNew || false)
     );
   }
 
@@ -177,8 +203,7 @@ const Moomoossi = () => {
             </h2>
 
             <div className="space-y-4">
-
-             <label className="flex cursor-pointer items-center gap-3">
+              <label className="flex cursor-pointer items-center gap-3">
                 <input
                   type="radio"
                   name="category"
@@ -234,7 +259,7 @@ const Moomoossi = () => {
                 />
 
                 <span className="text-lg text-[#172b4d]">
-                 Văn phòng phẩm
+                  Văn phòng phẩm
                 </span>
               </label>
 
@@ -286,17 +311,32 @@ const Moomoossi = () => {
             sản phẩm
           </p>
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
-            {currentProducts.map((product) => (
-              <YouusCard
-                key={product.id}
-                product={product}
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center py-20 text-gray-500">
+              <div className="mr-3 h-8 w-8 animate-spin rounded-full border-4 border-gray-300 border-t-[#0070ba]"></div>
+              <span className="text-base font-medium">Đang tải sản phẩm...</span>
+            </div>
+          ) : error ? (
+            <div className="py-12 text-center text-red-500">
+              <p className="text-base font-medium">{error}</p>
+            </div>
+          ) : currentProducts.length > 0 ? (
+            <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 xl:grid-cols-3">
+              {currentProducts.map((product) => (
+                <YouusCard
+                  key={product._id || product.id}
+                  product={product}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="py-12 text-center text-gray-500">
+              <p className="text-base font-medium">Không tìm thấy sản phẩm nào trong danh mục này.</p>
+            </div>
+          )}
 
           {/* Pagination */}
-          {totalPages > 1 && (
+          {!loading && totalPages > 1 && (
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}

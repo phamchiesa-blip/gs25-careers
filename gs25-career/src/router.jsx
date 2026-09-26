@@ -19,6 +19,7 @@ import StaffForm from './pages/jobs/registerForm/StaffFrom'
 import LMForm from './pages/jobs/registerForm/LMForm'
 import QAForm from './pages/jobs/registerForm/QAForm'
 import MS from './pages/jobs/registerForm/MS'
+import Search from "./pages/Search/Search";
 
 export default function AppRouter() {
   return (
@@ -43,6 +44,7 @@ export default function AppRouter() {
         <Route path='/lm-form' element={<LMForm />} />
         <Route path='/qa-form' element={<QAForm />} />
         <Route path='/ms-form' element={<MS />} />
+        <Route path="/tim-kiem" element={<Search />} />
       </Route>
     </Routes>
   )

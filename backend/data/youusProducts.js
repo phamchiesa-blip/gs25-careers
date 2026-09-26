@@ -1,0 +1,124 @@
+export const youusProducts = [
+  {
+    "name": "YOUUS Fruit Ade Jeju Green Tangerine 340ml",
+    "image": "/quyt.png",
+    "category": "youus",
+    "subCategory": "Trà/Nước trái cây",
+    "sold": 120,
+    "isNew": true
+  },
+  {
+    "name": "YOUUS Melon Latte 340ml",
+    "image": "/melon.png",
+    "category": "youus",
+    "subCategory": "Cà phê",
+    "sold": 142,
+    "isNew": true
+  },
+  {
+    "name": "Snack REAL Price Chococone 40g",
+    "image": "/snack_choco.png",
+    "category": "youus",
+    "subCategory": "Snack",
+    "sold": 133,
+    "isNew": true
+  },
+  {
+    "name": "Snack REAL Price Twikist 85g",
+    "image": "/snack_stick.png",
+    "category": "youus",
+    "subCategory": "Snack",
+    "sold": 72,
+    "isNew": false
+  },
+  {
+    "name": "YOUUS Vanilla Latte 500ml",
+    "image": "/cafe_vanilla.png",
+    "category": "youus",
+    "subCategory": "Cà phê",
+    "sold": 100,
+    "isNew": false
+  },
+  {
+    "name": "YOUUS Iced Tea Mango",
+    "image": "/xoai.png",
+    "category": "youus",
+    "subCategory": "Trà/Nước trái cây",
+    "sold": 188,
+    "isNew": true
+  },
+  {
+    "name": "YOUUS Americano Black 340ml",
+    "image": "/americano.png",
+    "category": "youus",
+    "subCategory": "Cà phê",
+    "sold": 166,
+    "isNew": false
+  },
+  {
+    "name": "YOUUS Americano Sweet 340ml",
+    "image": "/ame_sweet.png",
+    "category": "youus",
+    "subCategory": "Cà phê",
+    "sold": 143,
+    "isNew": true
+  },
+  {
+    "name": "YOUUS Banana Hazelnut Flavored 340ml",
+    "image": "/banana.png",
+    "category": "youus",
+    "subCategory": "Trà/Nước trái cây",
+    "sold": 62,
+    "isNew": true
+  },
+  {
+    "name": "YOUUS Fruit Ade Honey & Pear 340ml",
+    "image": "/honey.png",
+    "category": "youus",
+    "subCategory": "Trà/Nước trái cây",
+    "sold": 193,
+    "isNew": false
+  },
+  {
+    "name": "YOUUS Fruit Ade Triple Berry 340ml",
+    "image": "/berry.png",
+    "category": "youus",
+    "subCategory": "Trà/Nước trái cây",
+    "sold": 128,
+    "isNew": true
+  },
+  {
+    "name": "YOUUS Iced Tea Flat Peach 340ml",
+    "image": "/peach.png",
+    "category": "youus",
+    "subCategory": "Trà/Nước trái cây",
+    "sold": 100,
+    "isNew": false
+  },
+  {
+    "name": "YOUUS Jeju Yuza Green Tea 340ml",
+    "image": "/green.png",
+    "category": "youus",
+    "subCategory": "Trà/Nước trái cây",
+    "sold": 182,
+    "isNew": false
+  },
+  {
+    "name": "YOUUS Matcha Rusk 100g",
+    "image": "/matcha.png",
+    "category": "youus",
+    "subCategory": "Snack",
+    "sold": 95,
+    "isNew": false
+  },
+  {
+    "name": "YOUUS Netflix Popcorn 260g",
+    "image": "/popcorn.jpg",
+    "category": "youus",
+    "subCategory": "Snack",
+    "sold": 34,
+    "isNew": false
+  }
+];
+
+export default youusProducts;

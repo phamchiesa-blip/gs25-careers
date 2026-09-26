@@ -1,0 +1,132 @@
+export const moomoossiProducts = [
+  {
+    "name": "Áo thun MOOMOOSSI",
+    "image": "/áo-thun-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Quà tặng",
+    "sold": 120,
+    "isNew": true
+  },
+  {
+    "name": "Bộ bài tây MOOMOOSSI",
+    "image": "/bộ-bài-tây-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Đồ chơi",
+    "sold": 142,
+    "isNew": true
+  },
+  {
+    "name": "Dây đeo thẻ MOOMOOSSI",
+    "image": "/dây-đeo-thẻ-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Phụ kiện",
+    "sold": 133,
+    "isNew": true
+  },
+  {
+    "name": "Giấy note MOOMOOSSI",
+    "image": "/giấy-note-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Văn phòng phẩm",
+    "sold": 72,
+    "isNew": false
+  },
+  {
+    "name": "Gối cổ MOOMOOSSI",
+    "image": "/gối-cổ-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Quà tặng",
+    "sold": 100,
+    "isNew": false
+  },
+  {
+    "name": "Gối tựa lưng ANZRESSI",
+    "image": "/gối-tựa-lưng-anzressi.jpg",
+    "category": "moomoossi",
+    "subCategory": "Quà tặng",
+    "sold": 188,
+    "isNew": true
+  },
+  {
+    "name": "Gối tựa lưng MEOYOUNGSSI",
+    "image": "/gối-tựa-lưng-meoyoungssi.jpg",
+    "category": "moomoossi",
+    "subCategory": "Quà tặng",
+    "sold": 166,
+    "isNew": false
+  },
+  {
+    "name": "Gối tựa lưng MOOMOOSSI",
+    "image": "/gối-dựa-lưng-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Quà tặng",
+    "sold": 143,
+    "isNew": true
+  },
+  {
+    "name": "Gối tựa lưng SUNNAMSSI",
+    "image": "/gối-tựa-lưng-sunnamssi.jpg",
+    "category": "moomoossi",
+    "subCategory": "Quà tặng",
+    "sold": 62,
+    "isNew": true
+  },
+  {
+    "name": "Ly giữ nhiệt ANZRESSI",
+    "image": "/ly-giữ-nhiệt-anzressi.jpg",
+    "category": "moomoossi",
+    "subCategory": "Khác",
+    "sold": 193,
+    "isNew": false
+  },
+  {
+    "name": "Ly giữ nhiệt MEOYOUNGSSI",
+    "image": "/ly-giữ-nhiệt-meoyoungssi.jpg",
+    "category": "moomoossi",
+    "subCategory": "Khác",
+    "sold": 128,
+    "isNew": true
+  },
+  {
+    "name": "Ly giữ nhiệt MOOMOOSSI",
+    "image": "/ly-giữ-nhiệt-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Khác",
+    "sold": 100,
+    "isNew": false
+  },
+  {
+    "name": "Ly giữ nhiệt SUNNAMSSI",
+    "image": "/ly-giữ-nhiệt-sunnamssi.jpg",
+    "category": "moomoossi",
+    "subCategory": "Khác",
+    "sold": 182,
+    "isNew": false
+  },
+  {
+    "name": "Sổ da MOOMOOSSI màu be",
+    "image": "/sổ-da-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Văn phòng phẩm",
+    "sold": 95,
+    "isNew": false
+  },
+  {
+    "name": "Sổ da MOOMOOSSI màu hồng",
+    "image": "/sổ-da-moomoossi-hồng.jpg",
+    "category": "moomoossi",
+    "subCategory": "Văn phòng phẩm",
+    "sold": 34,
+    "isNew": false
+  },
+  {
+    "name": "Túi tote MOOMOOSSI",
+    "image": "/túi-totte-moomoossi.png",
+    "category": "moomoossi",
+    "subCategory": "Phụ kiện",
+    "sold": 27,
+    "isNew": false
+  }
+];
+
+export default moomoossiProducts;

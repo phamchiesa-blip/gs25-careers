@@ -16,6 +16,13 @@ const YouusCard = ({ product }) => {
       <h3 className="mt-4 text-center text-lg font-bold leading-tight text-[#172b4d]">
         {product.name}
       </h3>
+
+      {/* Giá sản phẩm (hiển thị khi có dữ liệu price từ backend) */}
+      {product.price !== undefined && product.price !== null && (
+        <p className="mt-2 text-center text-base font-bold text-[#0070ba]">
+          {Number(product.price).toLocaleString("vi-VN")} đ
+        </p>
+      )}
     </div>
   );
 };

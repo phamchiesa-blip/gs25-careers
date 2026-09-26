@@ -19,7 +19,17 @@ const productSchema = new mongoose.Schema(
 
     price: {
       type: Number,
-      required: true,
+      required: false,
+    },
+
+    sold: {
+      type: Number,
+      default: 0,
+    },
+
+    isNew: {
+      type: Boolean,
+      default: false,
     },
 
     image: {
@@ -34,6 +44,7 @@ const productSchema = new mongoose.Schema(
     },
     {
     timestamps: true,
+    suppressReservedKeysWarning: true,
   }
 );
 

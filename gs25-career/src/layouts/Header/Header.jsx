@@ -4,8 +4,12 @@ import { Menu, Search, X } from 'lucide-react'
 import logo from '../../assets/logo.png'
 import NavDesktop from './NavDesktop'
 import NavMobile from './NavMobile'
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
@@ -14,6 +18,14 @@ export default function Header() {
       document.body.style.overflow = ''
     }
   }, [mobileOpen]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (!search.trim()) return;
+
+    navigate(`/tim-kiem?search=${encodeURIComponent(search.trim())}`);
+};
 
   return (
     <header className="sticky top-0 z-50 bg-white">
@@ -30,14 +42,23 @@ export default function Header() {
         <NavDesktop />
 
         <div className="flex items-center relative">
-          <input
-            type="text"
-            placeholder="Tìm kiếm"
-            className="hidden items-center rounded-full border border-2 border-blue-600 bg-white w-[130px] px-7 py-2.5 text-[15px] font-bold text-orange-600 transition-colors duration-150 hover:bg-slate-50 lg:inline-flex"
-          />
-          <div className="hidden lg:block absolute flex item-center justify-center gap-2 left-3 top-1/2 -translate-y-1/2">
-          <Search className="h-4 w-4 text-[#F58220] font-extrabold"  />
-          </div>
+            <form onSubmit={handleSearch} className="relative">
+  <input
+    type="text"
+    placeholder="Tìm kiếm"
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    className="hidden items-center rounded-full border border-2 border-blue-600 bg-white w-[130px] px-7 py-2.5 text-[15px] font-bold text-orange-600 transition-colors duration-150 hover:bg-slate-50 lg:inline-flex"
+  />
+
+  <button
+    type="submit"
+    className="hidden lg:block absolute left-3 top-1/2 -translate-y-1/2"
+    aria-label="Tìm kiếm"
+  >
+    <Search className="h-4 w-4 text-[#F58220]" />
+  </button>
+</form>
            
 
           <button

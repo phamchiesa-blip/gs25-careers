@@ -4,15 +4,15 @@ const IntroduceForm = ({jobName, salary, time, type}) => {
   return (
     <>
     <div className="max-w-6xl mx-auto mb-3 flex justify-between">
-                <Link to="/tuyen-dung">
-                <div className="flex font-medium text-xl hover:text-white transition duration-200
+              <Link to="/tuyen-dung">
+              <div className="flex font-medium text-xl hover:text-white transition duration-200
                 rounded-3xl py-2 w-[135px] bg-[#00BFDD] text-center justify-center">
-                    <ArrowLeft className="mr-2 mt-1" />
+                  <ArrowLeft className="mr-2 mt-1" />
                     TRỞ LẠI
-                </div>
-                </Link>
-                <a href="#sm-form" className="text-xl font-medium hover:text-white transition duration-200
-                rounded-3xl py-2 w-[130px] bg-[#00BFDD] text-center justify-center">ỨNG TUYỂN</a>
+              </div>
+              </Link>
+              <a href="#sm-form" className="text-xl font-medium hover:text-white transition duration-200
+              rounded-3xl py-2 w-[130px] bg-[#00BFDD] text-center justify-center">ỨNG TUYỂN</a>
     </div>
 
     <div class="w-full max-w-6xl mx-auto p-4 mb-3">

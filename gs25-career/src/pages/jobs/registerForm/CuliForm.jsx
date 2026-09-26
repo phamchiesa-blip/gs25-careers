@@ -1,24 +1,26 @@
 import { useState } from "react";
 import { Calendar } from "lucide-react";
-import IntroduceForm from './IntroduceForm'
+import IntroduceForm from './IntroduceForm';
+import { submitApplication } from "../../../api/applicationApi";
+
+const initialFormState = {
+  fullName: "",
+  email: "",
+  phone: "",
+  birthday: "",
+  sex: "",
+  idCard: "",
+  hasOriginalId: "",
+  education: "",
+  workingArea: "",
+  shift: "",
+  startDate: "",
+};
 
 const CuliForm = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    birthday: "",
-    sex: "",
-    idCard: "",
-    hasOriginalId: "",
-    education: "",
-    workingArea: "",
-    shift: "",
-    startDate: "",
-    cvFile: null,
-  });
-
-  // const [previewImage, setPreviewImage] = useState(null);
+  const [formData, setFormData] = useState(initialFormState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,10 +30,32 @@ const CuliForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Dữ liệu ứng tuyển:", formData);
-    alert("Nộp đơn ứng tuyển thành công!");
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const payload = {
+        jobId: "nhan-vien-ban-hang-pt",
+        jobTitle: "Nhân viên Bán hàng (Bán thời gian / Part-time)",
+        ...formData,
+      };
+
+      const result = await submitApplication(payload);
+      setSubmitStatus({
+        type: "success",
+        message: result.message || "Nộp đơn ứng tuyển thành công! Vui lòng kiểm tra email xác nhận.",
+      });
+      setFormData(initialFormState);
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: error.message || "Có lỗi xảy ra khi nộp đơn. Vui lòng kiểm tra lại thông tin.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -203,7 +227,7 @@ const CuliForm = () => {
                     className="w-full bg-white text-gray-800 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-[#00BFDD] shadow-sm cursor-pointer text-sm sm:text-base"
                   >
                     <option value="" disabled>-- Chọn giới tính --</option>
-                    <option value="Đang giữ bản gốc">Nam</option>
+                    <option value="Nam">Nam</option>
                     <option value="Nữ">Nữ</option>
                     <option value="Khác">Khác</option>
                   </select>
@@ -305,13 +329,29 @@ const CuliForm = () => {
     
               </div>
     
+              {/* Trạng thái submit (Thành công / Thất bại) */}
+              {submitStatus && (
+                <div
+                  className={`p-4 rounded-xl text-center font-semibold text-sm sm:text-base transition-all duration-300 ${
+                    submitStatus.type === "success"
+                      ? "bg-emerald-500/20 text-emerald-200 border border-emerald-400"
+                      : "bg-red-500/20 text-red-200 border border-red-400"
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
+
               {/* Nút nộp đơn ứng tuyển */}
               <div className="pt-4 text-center">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-12 py-3.5 bg-[#00BFDD] hover:bg-[#00a7c2] active:scale-95 text-white font-extrabold text-lg sm:text-xl rounded-xl shadow-lg transition-all duration-200 cursor-pointer"
+                  disabled={isSubmitting}
+                  className={`w-full sm:w-auto px-12 py-3.5 bg-[#00BFDD] hover:bg-[#00a7c2] active:scale-95 text-white font-extrabold text-lg sm:text-xl rounded-xl shadow-lg transition-all duration-200 ${
+                    isSubmitting ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+                  }`}
                 >
-                  Nộp đơn ứng tuyển
+                  {isSubmitting ? "Đang gửi hồ sơ..." : "Nộp đơn ứng tuyển"}
                 </button>
               </div>
             </form>
