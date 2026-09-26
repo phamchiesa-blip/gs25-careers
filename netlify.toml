@@ -1,0 +1,4 @@
+[build]
+  base = "gs25-career"
+  command = "npm ci && npm run build"
+  publish = "dist"
